@@ -58,7 +58,7 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-500 ${
         scrolled
-          ? 'bg-dark-950/80 backdrop-blur-2xl shadow-navbar border-b border-white/[0.06]'
+          ? 'bg-white/90 backdrop-blur-xl shadow-sm border-b border-[#B59360]/10'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -79,7 +79,7 @@ export default function Navbar() {
           </Link>
 
           {/* ── Desktop Nav Links ── */}
-          <nav className="hidden md:flex items-center gap-1 p-1 rounded-2xl glass border-white/[0.06]">
+          <nav className="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-[#F5F3EE] border border-[#B59360]/10">
             {navLinks.map(link => {
               const isActive = pathname === link.href;
               return (
@@ -88,13 +88,10 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
                     isActive
-                      ? 'text-white'
-                      : 'text-dark-400 hover:text-dark-100'
+                      ? 'text-[#1A1714] bg-white shadow-sm'
+                      : 'text-[#6B6355] hover:text-[#1A1714]'
                   }`}
                 >
-                  {isActive && (
-                    <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/20 to-primary-600/10 border border-primary-500/20" />
-                  )}
                   <span className="relative">{link.label}</span>
                 </Link>
               );
@@ -106,11 +103,11 @@ export default function Navbar() {
             onSubmit={handleSearch}
             className={`hidden lg:flex items-center gap-2 flex-1 max-w-xs rounded-2xl px-4 py-2.5 border transition-all duration-300 ${
               searchFocused
-                ? 'bg-dark-800/60 border-primary-500/40 shadow-[0_0_0_3px_rgba(255,79,24,0.08)]'
-                : 'bg-white/[0.04] border-white/[0.07] hover:border-white/[0.12]'
+                ? 'bg-[#F5F3EE] border-[#B59360]/40 shadow-[0_0_0_3px_rgba(181,147,96,0.1)]'
+                : 'bg-[#F5F3EE] border-[#B59360]/15 hover:border-[#B59360]/30'
             }`}
           >
-            <Search className={`h-4 w-4 shrink-0 transition-colors duration-200 ${searchFocused ? 'text-primary-400' : 'text-dark-500'}`} />
+            <Search className={`h-4 w-4 shrink-0 transition-colors duration-200 ${searchFocused ? 'text-[#B59360]' : 'text-[#9C9080]'}`} />
             <input
               ref={searchRef}
               type="text"
@@ -119,32 +116,32 @@ export default function Navbar() {
               onChange={e => setSearch(e.target.value)}
               onFocus={() => setSearchFocused(true)}
               onBlur={() => setSearchFocused(false)}
-              className="w-full bg-transparent text-sm text-dark-100 outline-none placeholder:text-dark-600 font-medium"
+              className="w-full bg-transparent text-sm text-[#1A1714] outline-none placeholder:text-[#9C9080] font-medium"
             />
           </form>
 
-          {/* ── Right Action Icons ── */}
+          {/* Right Action Icons */}
           <div className="flex items-center gap-1">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl text-dark-500 hover:text-dark-100 hover:bg-white/[0.06] transition-all duration-200"
+              className="p-2.5 rounded-xl text-[#6B6355] hover:text-[#1A1714] hover:bg-[#F5F3EE] transition-all duration-200"
               aria-label="Toggle theme"
             >
               {dark
-                ? <Sun className="h-4.5 w-4.5" />
-                : <Moon className="h-4.5 w-4.5" />
+                ? <Sun className="h-4 w-4" />
+                : <Moon className="h-4 w-4" />
               }
             </button>
 
             {/* Wishlist */}
             <Link
               href="/wishlist"
-              className="relative p-2.5 rounded-xl text-dark-500 hover:text-dark-100 hover:bg-white/[0.06] transition-all duration-200"
+              className="relative p-2.5 rounded-xl text-[#6B6355] hover:text-[#1A1714] hover:bg-[#F5F3EE] transition-all duration-200"
             >
-              <Heart className="h-4.5 w-4.5" />
+              <Heart className="h-4 w-4" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white text-[9px] font-bold flex items-center justify-center shadow-glow animate-glow-pulse">
+                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white text-[9px] font-bold flex items-center justify-center">
                   {wishlist.length}
                 </span>
               )}
@@ -153,11 +150,11 @@ export default function Navbar() {
             {/* Cart */}
             <Link
               href="/cart"
-              className="relative p-2.5 rounded-xl text-dark-500 hover:text-dark-100 hover:bg-white/[0.06] transition-all duration-200"
+              className="relative p-2.5 rounded-xl text-[#6B6355] hover:text-[#1A1714] hover:bg-[#F5F3EE] transition-all duration-200"
             >
-              <ShoppingCart className="h-4.5 w-4.5" />
+              <ShoppingCart className="h-4 w-4" />
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white text-[9px] font-bold flex items-center justify-center shadow-glow">
+                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white text-[9px] font-bold flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -166,7 +163,7 @@ export default function Navbar() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileOpen(o => !o)}
-              className="md:hidden p-2.5 rounded-xl text-dark-400 hover:text-dark-100 hover:bg-white/[0.06] transition-all duration-200"
+              className="md:hidden p-2.5 rounded-xl text-[#6B6355] hover:text-[#1A1714] hover:bg-[#F5F3EE] transition-all duration-200"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -180,7 +177,7 @@ export default function Navbar() {
             mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="glass-card rounded-2xl mb-4 p-3 space-y-1">
+          <div className="bg-white/95 rounded-2xl mb-4 p-3 space-y-1 border border-[#B59360]/10 shadow-lg">
             {navLinks.map(link => (
               <Link
                 key={link.href}
@@ -188,8 +185,8 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                   pathname === link.href
-                    ? 'text-primary-400 bg-primary-500/10 border border-primary-500/15'
-                    : 'text-dark-400 hover:text-dark-100 hover:bg-white/[0.05]'
+                    ? 'text-[#B59360] bg-[#B59360]/10 border border-[#B59360]/15'
+                    : 'text-[#6B6355] hover:text-[#1A1714] hover:bg-[#F5F3EE]'
                 }`}
               >
                 {link.label}
@@ -198,15 +195,15 @@ export default function Navbar() {
 
             <form
               onSubmit={handleSearch}
-              className="flex items-center gap-2 mt-2 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3"
+              className="flex items-center gap-2 mt-2 bg-[#F5F3EE] border border-[#B59360]/15 rounded-xl px-4 py-3"
             >
-              <Search className="h-4 w-4 text-dark-500 shrink-0" />
+              <Search className="h-4 w-4 text-[#9C9080] shrink-0" />
               <input
                 type="text"
                 placeholder="Search restaurants..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full bg-transparent text-sm text-dark-100 outline-none placeholder:text-dark-600"
+                className="w-full bg-transparent text-sm text-[#1A1714] outline-none placeholder:text-[#9C9080]"
               />
             </form>
           </div>

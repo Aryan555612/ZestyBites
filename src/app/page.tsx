@@ -132,7 +132,7 @@ export default function HomePage() {
             {/* Main headline */}
             <motion.h1
               variants={fadeUp}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.03] mb-6"
+              className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-5"
               style={{ fontFamily: 'var(--font-cormorant)' }}
             >
               Taste the{' '}
@@ -147,23 +147,23 @@ export default function HomePage() {
             {/* Sub-heading */}
             <motion.p
               variants={fadeUp}
-              className="text-dark-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-8"
+              className="text-dark-400 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed mb-7 px-2"
             >
-              Experience top-rated restaurants, lightning-fast delivery routes, and
+              Experience top-rated restaurants, lightning-fast delivery, and
               chef-curated menus — all in one beautiful app.
             </motion.p>
 
             {/* Stats row */}
             <motion.div
               variants={fadeUp}
-              className="flex items-center justify-center gap-8 sm:gap-12 mb-10"
+              className="flex items-center justify-center gap-5 sm:gap-12 mb-9 flex-wrap"
             >
               {[
                 { value: 500, suffix: '+', label: 'Restaurants' },
                 { value: 50000, suffix: '+', label: 'Happy Foodies' },
                 { value: 12, suffix: '+', label: 'Cities' },
               ].map(s => (
-                <div key={s.label} className="text-center">
+                <div key={s.label} className="text-center min-w-[72px]">
                   <div className="text-2xl sm:text-3xl font-black gradient-text">
                     <AnimatedNumber target={s.value} suffix={s.suffix} />
                   </div>
@@ -207,8 +207,8 @@ export default function HomePage() {
               </div>
 
               {/* Quick search pills */}
-              <div className="flex items-center gap-2 mt-4 justify-center flex-wrap">
-                <span className="text-xs text-dark-600 font-medium">Trending:</span>
+              <div className="flex items-center gap-2 mt-4 justify-center flex-wrap overflow-x-auto pb-1 scrollbar-hide">
+                <span className="text-xs text-dark-600 font-medium shrink-0">Trending:</span>
                 {['🍕 Pizza', '🍛 Biryani', '🍔 Burgers', '🥡 Chinese', '🍣 Sushi'].map(q => (
                   <button
                     key={q}

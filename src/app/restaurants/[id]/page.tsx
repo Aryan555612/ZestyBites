@@ -52,18 +52,18 @@ export default function RestaurantDetailPage() {
       <Navbar />
 
       {/* Hero Image */}
-      <div className="relative h-64 sm:h-88 w-full overflow-hidden border-b border-white/[0.08]">
+      <div className="relative h-52 sm:h-72 w-full overflow-hidden border-b border-white/[0.08]">
         <img src={restaurant.image} alt={restaurant.name} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] via-transparent to-transparent opacity-90" />
         <button
           onClick={() => router.back()}
-          className="absolute left-4 top-4 p-2.5 rounded-full bg-white/90 text-dark-800 shadow-md backdrop-blur-sm hover:bg-white transition-all hover:scale-105"
+          className="absolute left-4 top-4 p-2.5 rounded-full bg-white/90 text-dark-800 shadow-md hover:bg-white transition-all hover:scale-105"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
         <button
           onClick={() => toggleWishlist(restaurant.id)}
-          className={`absolute right-4 top-4 p-2.5 rounded-full shadow-md backdrop-blur-sm transition-all hover:scale-105 ${
+          className={`absolute right-4 top-4 p-2.5 rounded-full shadow-md transition-all hover:scale-105 ${
             isFav
               ? 'bg-primary-500/20 text-primary-400 border border-primary-500/30 shadow-glow'
               : 'bg-white/90 text-dark-800 hover:text-primary-500'
@@ -75,31 +75,31 @@ export default function RestaurantDetailPage() {
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full -mt-16 relative z-10">
         {/* Info Card */}
-        <div className="card-premium rounded-3xl p-6 shadow-2xl mb-8">
-          <div className="flex items-start justify-between gap-4">
-            <div>
+        <div className="card-premium rounded-3xl p-4 sm:p-6 shadow-2xl mb-8">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
               <span className="section-label mb-2 inline-flex">Local Partner</span>
-              <h1 className="text-3xl font-black font-heading text-dark-50" style={{ fontFamily: 'var(--font-cormorant)' }}>{restaurant.name}</h1>
-              <p className="text-xs text-dark-500 mt-1">{restaurant.cuisines.join(' • ')}</p>
-              <p className="text-xs text-dark-600 mt-1.5 flex items-center gap-1.5">
-                <MapPin className="h-4 w-4 text-primary-500" /> {restaurant.address}
+              <h1 className="text-2xl sm:text-3xl font-black font-heading text-dark-50" style={{ fontFamily: 'var(--font-cormorant)' }}>{restaurant.name}</h1>
+              <p className="text-xs text-dark-500 mt-1 truncate">{restaurant.cuisines.join(' • ')}</p>
+              <p className="text-xs text-dark-600 mt-1.5 flex items-start gap-1.5">
+                <MapPin className="h-4 w-4 text-primary-500 shrink-0 mt-0.5" /> {restaurant.address}
               </p>
             </div>
-            <span className="flex items-center gap-1 rounded-xl bg-emerald-800/10 border border-emerald-800/20 px-3 py-1.5 text-sm font-bold text-emerald-800 shrink-0">
+            <span className="flex items-center gap-1 rounded-xl bg-emerald-800/10 border border-emerald-800/20 px-2.5 py-1.5 text-sm font-bold text-emerald-800 shrink-0">
               {restaurant.rating} <Star className="h-3.5 w-3.5 fill-emerald-800 text-emerald-800" />
             </span>
           </div>
 
-          <div className="mt-5 flex items-center gap-6 text-xs text-dark-500 border-t border-white/[0.06] pt-4 flex-wrap">
+          <div className="mt-4 flex items-center gap-3 sm:gap-6 text-xs text-dark-500 border-t border-white/[0.06] pt-4 flex-wrap">
             <span className="flex items-center gap-1.5 font-medium text-dark-300">
-              <Clock className="h-4 w-4 text-primary-500" /> {restaurant.deliveryTime} mins delivery
+              <Clock className="h-4 w-4 text-primary-500" /> {restaurant.deliveryTime} mins
             </span>
-            <span>·</span>
+            <span className="hidden sm:inline">·</span>
             <span>{restaurant.distance} km away</span>
-            <span>·</span>
+            <span className="hidden sm:inline">·</span>
             <span className="font-bold text-dark-100">₹{restaurant.priceForTwo} for two</span>
             {restaurant.offer && (
-              <span className="ml-auto bg-primary-500/10 text-primary-500 border border-primary-500/15 px-3 py-1 rounded-xl font-bold text-[10px] shadow-sm">
+              <span className="bg-primary-500/10 text-primary-500 border border-primary-500/15 px-3 py-1 rounded-xl font-bold text-[10px] shadow-sm">
                 {restaurant.offer}
               </span>
             )}
@@ -198,10 +198,10 @@ export default function RestaurantDetailPage() {
 
       {/* Sticky Cart CTA */}
       {cart.length > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50">
           <button
             onClick={() => router.push('/cart')}
-            className="flex items-center gap-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm hover:scale-103 transition-transform"
+            className="w-full sm:w-auto flex items-center justify-center gap-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm hover:scale-103 transition-transform"
           >
             <ShoppingCart className="h-5 w-5" />
             <span>View Cart</span>

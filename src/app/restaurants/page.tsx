@@ -227,7 +227,7 @@ export default function RestaurantsPage() {
                         <p className="text-xs text-dark-500 mt-1 truncate">{rest.cuisines.join(' · ')}</p>
                       </div>
 
-                      <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3 text-[11px] text-dark-500">
+                      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/[0.06] pt-3 text-[11px] text-dark-500">
                         <span className="flex items-center gap-1 font-semibold text-dark-300">
                           <Clock className="h-3.5 w-3.5 text-primary-500" />
                           {rest.deliveryTime} mins
@@ -238,7 +238,7 @@ export default function RestaurantsPage() {
                           {rest.distance} km
                         </span>
                         <span className="text-dark-600">·</span>
-                        <span className="font-bold text-dark-100">₹{rest.priceForTwo} for two</span>
+                        <span className="font-bold text-dark-100 ml-auto">₹{rest.priceForTwo} for two</span>
                       </div>
                     </div>
 
