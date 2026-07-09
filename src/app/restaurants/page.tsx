@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Search, SlidersHorizontal, Star, Clock, Heart, ArrowRight, X, MapPin } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { INITIAL_CATEGORIES } from '@/utils/mockDb';
 
-export default function RestaurantsPage() {
+function RestaurantsList() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { restaurants, toggleWishlist, wishlist } = useApp();
@@ -258,5 +258,21 @@ export default function RestaurantsPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function RestaurantsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex flex-col bg-[#FAF9F6] text-[#1A1714]">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-sm font-semibold text-[#B59360] animate-pulse">Loading ZestyBites...</div>
+        </div>
+        <Footer />
+      </div>
+    }>
+      <RestaurantsList />
+    </Suspense>
   );
 }
